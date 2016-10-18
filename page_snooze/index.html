@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>Wearable UI</title>
+	<link rel="stylesheet"  href="../lib/tau/wearable/theme/changeable/tau.css">
+	<link rel="stylesheet"  href="../css/style.css">
+		
+</head>
+<body>
+
+	<div class="ui-page ui-page-active" id="main">
+		
+		<div class="ui-content">
+			<div class="ui-content first-section">			
+				<div class="divide-section-150px" style="text-align:center">
+					<div class="inline-block" >
+						<font color="black" size="6pt">
+							<b>Alarm again after</b>
+						</font>
+					</div>
+				</div>	
+							
+				
+				<div class="divide-section-150px" style="text-align:center">
+					<div class="inline-block">
+						<input id="minus_delay" type="image" src="../UI_images/button_minus.png">
+					</div>
+					
+					<div class="inline-block">
+						<input id="snooze_min" type="text" style="text-align:center; font-size:30pt; width:50px; height:60px" value = 5 disabled>
+					</div> 
+					
+					<div class="inline-block">
+						<input id="plus_delay" type="image" src="../UI_images/button_plus.png">
+						<font color="black" size="6pt">
+							<b>minutes</b>
+						</font>
+					</div> 
+					 					
+				</div>
+			</div>
+			
+			<div class="progress-bar">
+				<img src="../UI_images/progressbar_0.png"></img>
+			</div>
+			
+			<div class="divide-section-115px" style="text-align:center">					
+				<a href="../after_snooze/index.html" onclick="delaySurvey()"> 
+					<input id="later_btn" type="image" src="../UI_images/later_btn.png">
+				</a>				
+			</div>		
+			<script src="page_snooze.js"></script>
+			
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/tau/wearable/js/tau.js" data-build-remove="false"></script>
+	
+</body>
+</html>

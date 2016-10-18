@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>Wearable UI</title>
+	<link rel="stylesheet"  href="../lib/tau/wearable/theme/changeable/tau.css">
+	<link rel="stylesheet"  href="../css/style.css">
+		
+</head>
+<body>
+
+	<div class="ui-page ui-page-active" id="main">
+		
+		<div class="ui-content">
+			<div class="ui-content first-section">	
+									
+				<div class="divide-section-150px" style="text-align:center">
+					<div class="inline-block" >
+						<img src="../UI_images/low_arousal.png"></img>
+					</div>
+					
+					<div class="inline-block" >
+						<div class="inside-inline-block" ><input id="arousal" type="range" style="width:120px; height:200%" min=0 max=100 step=10 value=50 /></div>
+					</div>
+					
+					
+					<div class="inline-block" >
+						<img src="../UI_images/high_arousal.png"></img>
+					</div>
+				</div>	
+				
+				<div class="divide-section-150px" style="text-align:center">
+					<div class="inline-block" >
+						<img src="../UI_images/sad_emoji.png"></img>
+					</div>
+					
+					<div class="inline-block">
+						<div class="inside-inline-block" ><input id="happiness" type="range" style="width:120px; height:200%" min=0 max=100 step=10 value=50 /></div>
+					</div>
+					
+					<div class="inline-block" >
+						<img src="../UI_images/smile_emoji.png"></img>
+					</div>
+				</div>	
+				
+			</div>
+			
+			<div class="progress-bar">
+				<img src="../UI_images/progressbar_5.png"></img>
+			</div>
+			
+			<div class="below-section">
+				<font color="black" size="5px"><b>Your</b></font>
+				<font color="#18709C" size="5px"><b>EMOTIONAL STATUS</b></font>
+				<font color="black" size="5px"><b>?</b></font>
+			</div>
+			
+			<div class="below-section">			
+				<span id="left-button"><a href="../page4/index.html" class="ui-btn ui-multiline ui-inline" onclick="buttonFeedback()">Prev</a></span>
+							
+				<span id="right-button"><a href="../page6/index.html" class="ui-btn ui-multiline ui-inline" id="saveFeeling">Next</a></span>				
+			</div>			
+			<script src="page5.js"></script>
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/tau/wearable/js/tau.js" data-build-remove="false"></script>
+	
+</body>
+</html>

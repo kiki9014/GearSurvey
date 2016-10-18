@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>Wearable UI</title>
+	<link rel="stylesheet"  href="../lib/tau/wearable/theme/changeable/tau.css">
+	<link rel="stylesheet"  href="../css/style.css">
+		
+</head>
+<body>
+
+	<div class="ui-page ui-page-active" id="main">
+		
+		<div class="ui-content">
+			<div class="ui-content first-section">
+			
+				<div class="divide-section-triple"> 
+					<div class="inline-block"><font color="black" size = 6.5px >Now, I'm with</font></div> 
+				</div>
+				
+				<div class="divide-section-triple " >
+					<div class="inline-block"><input id="minus_btn" type="image" src="../UI_images/button_minus.png"></div>
+					
+					<div class="inline-block">
+						<input id="companions" type="text" style="text-align:center; font-size:30pt; width:50px; height:60px" value = 0 disabled>
+					</div> 
+					
+					<div class="inline-block"><input id="plus_btn" type="image" src="../UI_images/button_plus.png"></div> 
+					<div class="inline-block"><font color="black" size = 7px >People,</font></div>  					
+				</div>							
+						
+				<div class="divide-section-triple">
+					<div class="inline-block"><input id="left_btn" type="image" src="../UI_images/button_left.png"></div>
+					<div class="inline-block">
+						<input id="activity" type="text" style="text-align:center; font-size:20pt; width:20px; height:60px; width:240px" value="--" disabled>
+					</div>
+					<div class="inline-block"><input id="right_btn" type="image" src="../UI_images/button_right.png"></div>
+				</div>
+				<script src="./page3.js"></script>
+				
+			</div>
+			
+			<div class="progress-bar">
+				<img src="../UI_images/progressbar_3.png"></img>
+			</div>
+			
+			<div class="below-section">
+				<font color="black" size="5px"><b>Your</b></font>
+				<font color="#18709C" size="5px"><b>TYPE OF ACTIVITY</b></font>
+				<font color="black" size="5px"><b>?</b></font>
+			</div>
+			
+			<div class="below-section">			
+				<span id="left-button"><a href="../page2/index.html" class="ui-btn ui-multiline ui-inline" onclick="buttonFeedback()">Prev</a></span>
+							
+				<span id="right-button"><a href="../page4/index.html" class="ui-btn ui-multiline ui-inline" id="savePAct">Next</a></span>				
+			</div>			
+			
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/tau/wearable/js/tau.js" data-build-remove="false"></script>
+	
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>Wearable UI</title>
+	<link rel="stylesheet"  href="../lib/tau/wearable/theme/changeable/tau.css">
+	<link rel="stylesheet"  href="../css/style.css">
+</head>
+<body>
+	<div class="ui-page ui-page-active" id="main">
+		
+		<div class="ui-content">
+			<div class="ui-content first-section">
+			
+				<div class="divide-section-triple"> 
+					<div class="inline-block">
+						<font color="black" size = 5px >
+							<b>Can you tell us </b>
+						</font>
+					</div> 
+				</div>
+				
+				<div class="divide-section-triple"> 
+					<div class="inline-block">
+						<font color="black" size = 5px >
+							<b>Where are you now? </b>
+						</font>
+					</div> 
+				</div>						
+						
+				<div class="divide-section-triple">
+					<div class="inline-block"><input id="left_btn_loc" type="image" src="../UI_images/button_left.png"></div> 
+					<div class="inline-block">
+					
+						<input id="new_location" type="text" style="text-align:center; font-size:20pt; width:20px; height:60px; width:240px" value="Enter location" onclick="buttonFeedback()">
+					</div>
+					<div class="inline-block"><input id="right_btn_loc" type="image" src="../UI_images/button_right.png"></div>
+				</div>
+				
+			<script src="./page2.js"></script>
+				
+			</div>
+			
+						
+			<div class="progress-bar">
+				<img src="../UI_images/progressbar_2.png"></img>
+			</div>
+			
+			<div class="below-section">
+				<font color="black" size="5px"><b>Your</b></font>
+				<font color="#18709C" size="5px"><b>LOCATION TYPE</b></font>
+				<font color="black" size="5px"><b>?</b></font>
+			</div>
+			
+			<div class="below-section">			
+				<span id="left-button"><a href="../index.html" class="ui-btn ui-multiline ui-inline" onclick="buttonFeedback()">Prev</a></span>
+														
+				<span id="right-button"><a href="../page3/index.html" class="ui-btn ui-multiline ui-inline" id="saveLocate">Next</a></span>	
+			
+			</div>
+			
+			<div id="popupToast" class="ui-popup ui-popup-toast">
+				<div class="ui-popup-content">
+					<font size = 4px >Please proceed after answering the question :)</font> 
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/tau/wearable/js/tau.js" data-build-remove="false"></script>
+</body>
+</html>

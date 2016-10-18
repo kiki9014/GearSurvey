@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>Wearable UI</title>
+	<link rel="stylesheet"  href="../lib/tau/wearable/theme/changeable/tau.css">
+	<link rel="stylesheet"  href="../css/style.css">
+		
+</head>
+<body>
+
+	<div class="ui-page ui-page-active" id="main">
+		
+		<div class="ui-content">
+			<div class="ui-content first-section">							
+				<div class="divide-section-115px" style="text-align:center">
+					<div class="inline-block" >
+						<img src="../UI_images/Heart_Rate.png"></img>
+					</div>
+				</div>
+				
+				
+				<div class="divide-section-115px" style="text-align:center">
+					
+					<div class="inline-block" >
+						<input id="heart_rate" type="text" style="background-color: #febeb1; border:0px none; text-align:center; font-size:25pt; width:80px; height:60px" value = --  disabled>
+					
+						<font color="black" size="5pt"> <b>bpm</b> </font>
+					</div>
+				</div>
+				
+				<div class="divide-section-60px" style="text-align:center">
+					<div class="inline-block" >
+						<img src="../UI_images/sick_emoji.png"></img>
+					</div>
+					<div class="inline-block">
+						<input id="imoji" type="range" style="width:200px; height:100% " min=0 max=100 step=10 value=50 />
+					</div>
+					<div class="inline-block" >
+						<img src="../UI_images/healthy_emoji.png"></img>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			<div class="progress-bar">
+				<img src="../UI_images/progressbar_4.png"></img>
+			</div>
+			
+			<div class="below-section">
+				<font color="black" size="5px"><b>Your</b></font>
+				<font color="#18709C" size="5px"><b>HEALTH STATUS</b></font>
+				<font color="black" size="5px"><b>?</b></font>
+			</div>
+			
+			<div class="below-section">			
+				<span id="left-button"><a href="../page3/index.html" class="ui-btn ui-multiline ui-inline" onclick="buttonFeedback()">Prev</a></span>
+							
+				<span id="left-button"><a class="ui-btn ui-multiline ui-inline" id="getHR">Measure</a></span>		
+							
+				<span id="left-button"><a href="../page5/index.html" class="ui-btn ui-multiline ui-inline" id="saveHealth">Next</a></span>				
+			</div>
+			<script src="page4.js"></script>			
+			
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/tau/wearable/js/tau.js" data-build-remove="false"></script>
+	
+</body>
+</html>

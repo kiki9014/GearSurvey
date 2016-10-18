@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>Wearable UI</title>
+	<link rel="stylesheet"  href="../lib/tau/wearable/theme/changeable/tau.css">
+	<link rel="stylesheet"  href="../css/style.css">
+		
+</head>
+<body>
+
+	<div class="ui-page ui-page-active" id="main">
+		
+		<div class="ui-content">
+			<div class="ui-content first-section">
+			
+				<div class="divide-section-triple"> 
+					<div class="inline-block">
+						<font color="black" size = 6.5px >
+							<b> Why did you </b>
+						</font>
+					</div> 
+				</div>
+				
+				<div class="divide-section-triple"> 
+					<div class="inline-block">
+						<font color="black" size = 6.5px >
+							<b> postpone </b>
+						</font>
+					</div> 
+				</div>						
+						
+				<div class="divide-section-triple"> 
+					<div class="inline-block">
+						<font color="black" size = 6.5px >
+							<b> last alarm? </b>
+						</font>
+					</div> 
+				</div>
+				
+			</div>
+			
+			<div class="divide-section-60px_emo"> 
+				<div class="inline-block">
+					<input id="reason" type="text" style="text-align:center; font-size:20pt; width:20px; height:45px; width:350px" value="--" onclick="buttonFeedback()">
+				</div>
+			</div>
+			<script src="./after_snooze.js"></script>
+			
+			<div class="below-section">	
+				<font color="#18709C" size="5px"><b>Start logging your data!</b></font>				
+			</div>	
+				
+			<div class="below-section">	
+							
+				<span id="left-button"><a href="../page_snooze/index.html" class="ui-btn ui-multiline ui-inline" >Later</a></span>				
+				
+				<span id="right-button"> <a href="../index.html" class="ui-btn ui-multiline ui-inline" id="delayReason"> Start</a> </span>	
+			</div>	
+			
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/tau/wearable/js/tau.js" data-build-remove="false"></script>
+	
+</body>
+</html>

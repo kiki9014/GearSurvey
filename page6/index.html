@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<title>Wearable UI</title>
+	<link rel="stylesheet"  href="../lib/tau/wearable/theme/changeable/tau.css">
+	<link rel="stylesheet"  href="../css/style.css">
+		
+</head>
+<body>
+
+	<div class="ui-page ui-page-active" id="main">
+		
+		<div class="ui-content">
+			<div class="ui-content first-section">			
+				<div class="divide-section-triple" style="text-align:center">
+					<div class="inline-block" >
+						<font color="black" size="6pt">
+							<b>Today's</b>
+						</font>
+					</div>
+				</div>	
+							
+				<div class="divide-section-triple" style="text-align:center">
+					<div class="inline-block" >
+						<font color="black" size="6pt">
+							<b>Logging Count</b>
+						</font>
+					</div>
+				</div>
+				
+				<div class="divide-section-triple" style="text-align:center">
+					<div class="inline-block">
+						<input id="num_logs" type="text" style="background-color: #effff7; border:0px none; text-align:center; font-size:25pt; width:20px; height:60px; width:80px" value="--" disabled>
+					</div>					
+				</div>
+			</div>
+			
+			<div class="progress-bar">
+				<img src="../UI_images/progressbar_6.png"></img>
+			</div>
+			
+			<div class="divide-section-115px" style="text-align:center">					
+				<a>
+					<input id="end_btn" type="image" src="../UI_images/end_btn.png">	
+				</a>				
+			</div>		
+			<script src="page6.js"></script>
+			
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/tau/wearable/js/tau.js" data-build-remove="false"></script>
+	
+</body>
+</html>
