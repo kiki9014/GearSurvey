@@ -216,11 +216,11 @@ body {
 }
 .checks.small input[type="radio"] + label:before {
     top: -2px;
-  width: 21px;
-  height: 21px;
+  width: 28px;
+  height: 28px;
 }
 .checks.small input[type="radio"]:checked + label:after {
     top: 3px;
-  width: 13px;
-  height: 13px;
+  width: 20px;
+  height: 20px;
 }
