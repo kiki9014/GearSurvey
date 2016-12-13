@@ -1,13 +1,6 @@
 #delete
 #add
-res/wgt/js\dataSave.js
 #modify
 res/wgt/author-signature.xml
 res/wgt/signature1.xml
-res/wgt/index.html
-res/wgt/js\app.js
-res/wgt/page2\index.html
-res/wgt/page2\page2.js
-res/wgt/page3\page3.js
-res/wgt/page5\page5.js
-res/wgt/page6\page6.js
+res/wgt/page5_2\page5_2.js

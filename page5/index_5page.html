@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,user-scalable=no" charset="utf-8"/>
+	<title>Wearable UI</title>
+	<link rel="stylesheet"  href="../lib/tau/wearable/theme/changeable/tau.css">
+	<link rel="stylesheet"  href="../css/style.css">
+		
+</head>
+<body>
+
+	<div class="ui-page ui-page-active" id="main">
+		
+		<div class="ui-content">
+			<div class="below-section", style="text-align:center">
+				<b>
+					<font color="black" size="4px">이전보다, 당신의</font>
+					<font color="#18709C" size="5px">감정 상태는</font>
+					<font color="black" size="4px"><b>?</b></font>
+				</b>
+			</div>
+			
+			<div class="ui-content first-section">	
+									
+				<div class="divide-section-no-horizonPadding" style="text-align:center">
+					<div class="inline-block" >
+						<img src="../UI_images/low_arousal.png"></img>
+					</div>
+					
+					<div class="inline-block" >
+						<div class="inside-inline-block" >
+							<font color="black" size="5px">Activeness</font>
+						</div>
+						<div class="inside-block" >
+							<div class="checks small">
+	                    		<input type="radio" id="arousal_down_1" value="down_1" name="arousal"><label for="arousal_down_1">-</label>
+	                    		<input type="radio" id="arousal_mod" value="mod" name="arousal"><label for="arousal_mod">0</label>
+	                    		<input type="radio" id="arousal_up_1" value="up_1" name="arousal"><label for="arousal_up_1">+</label>
+	                    	</div>
+						</div>
+					</div>
+					
+					
+					<div class="inline-block" >
+						<img src="../UI_images/high_arousal.png"></img>
+					</div>
+				</div>	
+				
+				<div class="divide-section-no-horizonPadding" style="text-align:center">
+					<div class="inline-block" >
+						<img src="../UI_images/sad_emoji.png"></img>
+					</div>
+					
+					<div class="inline-block">
+						<div class="inside-inline-block" >
+							<font color="black" size="5px">Happiness</font>
+						</div>
+						<div class="inside-block" >
+							<div class="checks small">
+	                    		<input type="radio" id="happy_down_1" value="down_1" name="happiness"><label for="happy_down_1">-</label>
+	                    		<input type="radio" id="happy_mod" value="mod" name="happiness"><label for="happy_mod">0</label>
+	                    		<input type="radio" id="happy_up_1" value="up_1" name="happiness"><label for="happy_up_1">+</label>
+	                    	</div>						
+	                    </div>
+					</div>
+					
+					<div class="inline-block" >
+						<img src="../UI_images/smile_emoji.png"></img>
+					</div>
+				</div>	
+				
+			</div>
+			
+			<div class="progress-bar">
+				<img src="../UI_images/progressbar_5.png"></img>
+			</div>
+			
+			
+			
+			<div class="below-section">			
+				<span id="left-button"><a href="../page4/index.html" class="ui-btn ui-multiline ui-inline" onclick="buttonFeedback()">이전</a></span>
+							
+				<span id="right-button"><a href="../page5_2/index_5-2page.html" class="ui-btn ui-multiline ui-inline" id="saveFeeling">다음</a></span>				
+			</div>			
+			<script src="page5.js"></script>
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/tau/wearable/js/tau.js" data-build-remove="false"></script>
+	
+</body>
+</html>

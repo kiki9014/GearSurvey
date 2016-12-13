@@ -10,10 +10,12 @@ document.getElementById("end_btn").addEventListener("click", function(){
 //	actStream.close();
 	buttonFeedback();
 	endSave();
-	logging("End survey");
-	endLogging();
+	logging("reset survey Timer");
 	remotePort.sendMessage([{key:"command",value:"surveyEnd"}],localPort);
 	localPort.removeMessagePortListener(watchID);
 	
+	console.log("End logging");
+	endLogging();
+	console.log("End survey");
 	tizen.application.getCurrentApplication().exit();
 });

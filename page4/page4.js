@@ -15,7 +15,7 @@ remotePort.sendMessage([{key:"command",value:"heartRate"}],localPort);
 logging("data transmitted");
 
 document.getElementById("saveHealth").addEventListener("click", function(){
-	var HR = document.getElementById("heart_rate").getAttribute("value"), imoji = document.getElementById("imoji").value;
+	var HR = document.getElementById("heart_rate").getAttribute("value"), imoji = getValueFromRadio("health");
 	
 	saveData("HeartRate", HR);
 	saveData("Health", imoji);

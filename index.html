@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<meta name="viewport" content="width=device-width,user-scalable=no" charset="utf-8"/>
 	<title>Wearable UI</title>
 	<link rel="stylesheet"  href="lib/tau/wearable/theme/changeable/tau.css">     
 	<script src="js/jquery-1.9.1.js"></script> 
@@ -12,17 +12,19 @@
 
 	<div class="ui-page ui-page-active" id="main">		
 		<div class="ui-content">
-			<div class="first-image"></div>
-			
 			<div class="below-section">	
-				<font color="black" size="5px"><b>Start logging your data!</b></font>				
+				<div style="text-align:center">
+					<font color="black" size="5px"><b>설문을 시작합니다</b></font>
+				</div>				
 			</div>	
-				
+			
+			<div class="first-image"></div>			
+							
 			<div class="below-section">	
 							
-				<span id="left-button"><a href="./page_snooze/index.html" class="ui-btn ui-multiline ui-inline" onclick="buttonFeedback()">Later</a></span>				
+				<span id="left-button"><a href="./page_snooze/index.html" class="ui-btn ui-multiline ui-inline" onclick="buttonFeedback()">미루기</a></span>				
 <!-- 				<span id="mid-button"><a href=# class="ui-btn ui-multiline ui-inline" onclick="connect()">Later</a></span>				 -->
-				<span id="right-button"> <a href="./page2/index.html" class="ui-btn ui-multiline ui-inline" id="startSurvey"> Next</a> </span>	
+				<span id="right-button"> <a href="./page2/index.html" class="ui-btn ui-multiline ui-inline" id="startSurvey"> 다음</a> </span>	
 			</div>
 			
 		</div>

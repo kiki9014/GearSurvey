@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<meta name="viewport" content="width=device-width,user-scalable=no" charset="utf-8"/>
 	<title>Wearable UI</title>
 	<link rel="stylesheet"  href="../lib/tau/wearable/theme/changeable/tau.css">
 	<link rel="stylesheet"  href="../css/style.css">
@@ -12,12 +12,15 @@
 	<div class="ui-page ui-page-active" id="main">
 		
 		<div class="ui-content">
+			<div class="below-section" style="text-align:center">	
+					<font color="#18709C" size="5px"><b>이유를 작성해 주세요</b></font>				
+			</div>
 			<div class="ui-content first-section">
-			
+					
 				<div class="divide-section-triple"> 
 					<div class="inline-block">
 						<font color="black" size = 6.5px >
-							<b> Why did you </b>
+							<b> 당신은 왜 </b>
 						</font>
 					</div> 
 				</div>
@@ -25,7 +28,7 @@
 				<div class="divide-section-triple"> 
 					<div class="inline-block">
 						<font color="black" size = 6.5px >
-							<b> postpone </b>
+							<b> 설문을 </b>
 						</font>
 					</div> 
 				</div>						
@@ -33,7 +36,7 @@
 				<div class="divide-section-triple"> 
 					<div class="inline-block">
 						<font color="black" size = 6.5px >
-							<b> last alarm? </b>
+							<b> 지연시켰나요? </b>
 						</font>
 					</div> 
 				</div>
@@ -47,15 +50,13 @@
 			</div>
 			<script src="./after_snooze.js"></script>
 			
-			<div class="below-section">	
-				<font color="#18709C" size="5px"><b>Start logging your data!</b></font>				
-			</div>	
+			
 				
 			<div class="below-section">	
 							
-				<span id="left-button"><a href="../page_snooze/index.html" class="ui-btn ui-multiline ui-inline" >Later</a></span>				
+				<span id="left-button"><a href="../page_snooze/index.html" class="ui-btn ui-multiline ui-inline" >미루기</a></span>				
 				
-				<span id="right-button"> <a href="../index.html" class="ui-btn ui-multiline ui-inline" id="delayReason"> Start</a> </span>	
+				<span id="right-button"> <a href="../index.html" class="ui-btn ui-multiline ui-inline" id="delayReason"> 시작</a> </span>	
 			</div>	
 			
 		</div>

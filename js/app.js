@@ -45,6 +45,23 @@ checkDelayID = localPort.addMessagePortListener(function(data, remote){
 
 startDate = getMonthDate(tizen.time.getCurrentDateTime());
 
+function getValueFromRadio(name){
+	var objList = document.getElementsByName(name);
+	console.log(objList);
+	var checkedValue=3;
+	numObj = objList.length;
+	for (i = 0 ; i<numObj; i++){
+		obj = objList[i];
+		if (obj.checked == true){
+			checkedValue = obj.value;
+			console.log("checked");
+		}
+	}
+	
+	console.log("radio button value : " + checkedValue);
+	return checkedValue;
+}
+
 function startSave(){
 	
 	buttonFeedback();

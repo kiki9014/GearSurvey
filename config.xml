@@ -14,5 +14,4 @@
     <tizen:privilege name="http://developer.samsung.com/privilege/accessoryprotocol"/>
     <tizen:privilege name="http://tizen.org/privilege/content.read"/>
     <tizen:privilege name="http://tizen.org/privilege/content.write"/>
-    <tizen:setting screen-orientation="portrait" context-menu="enable" background-support="enable" encryption="disable" install-location="auto" hwkey-event="enable"/>
 </widget>

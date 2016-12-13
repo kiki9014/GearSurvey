@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<meta name="viewport" content="width=device-width,user-scalable=no" charset="utf-8"/>
 	<title>Wearable UI</title>
 	<link rel="stylesheet"  href="../lib/tau/wearable/theme/changeable/tau.css">
 	<link rel="stylesheet"  href="../css/style.css">
@@ -11,7 +11,13 @@
 
 	<div class="ui-page ui-page-active" id="main">
 		
-		<div class="ui-content">
+		<div class="ui-content">		
+			<div class="below-section" style="text-align:center">
+				<font color="black" size="5px"><b>당신의</b></font>
+				<font color="#18709C" size="5px"><b>현재 건강 상태는</b></font>
+				<font color="black" size="5px"><b>?</b></font>
+			</div>
+			
 			<div class="ui-content first-section">							
 				<div class="divide-section-115px" style="text-align:center">
 					<div class="inline-block" >
@@ -30,11 +36,15 @@
 				</div>
 				
 				<div class="divide-section-60px" style="text-align:center">
-					<div class="inline-block" >
-						<img src="../UI_images/sick_emoji.png"></img>
-					</div>
 					<div class="inline-block">
-						<input id="imoji" type="range" style="width:200px; height:100% " min=0 max=100 step=10 value=50 />
+						<img src="../UI_images/sick_emoji.png"></img>
+					</div>					
+					<div class="inline-block" >
+						<div class="checks small" style="vertical-align:middle">
+	    	                <input type="radio" id="health_down_1" value="down_1" name="health"><label for="health_down_1">-</label>
+	        	            <input type="radio" id="health_mod" value="mod" name="health"><label for="health_mod">0</label>
+	            	        <input type="radio" id="health_up_1" value="up_1" name="health"><label for="health_up_1">+</label>
+	                    </div>					
 					</div>
 					<div class="inline-block" >
 						<img src="../UI_images/healthy_emoji.png"></img>
@@ -48,18 +58,13 @@
 				<img src="../UI_images/progressbar_4.png"></img>
 			</div>
 			
-			<div class="below-section">
-				<font color="black" size="5px"><b>Your</b></font>
-				<font color="#18709C" size="5px"><b>HEALTH STATUS</b></font>
-				<font color="black" size="5px"><b>?</b></font>
-			</div>
 			
-			<div class="below-section">			
-				<span id="left-button"><a href="../page3/index.html" class="ui-btn ui-multiline ui-inline" onclick="buttonFeedback()">Prev</a></span>
+			<div class="below-section" style="text-align:center">			
+				<span id="left-button"><a href="../page3/index.html" class="ui-btn ui-multiline ui-inline" onclick="buttonFeedback()">이전</a></span>
 							
-				<span id="left-button"><a class="ui-btn ui-multiline ui-inline" id="getHR">Measure</a></span>		
+				<span id="mid-button"><a class="ui-btn ui-multiline ui-inline" id="getHR">측정</a></span>		
 							
-				<span id="left-button"><a href="../page5/index.html" class="ui-btn ui-multiline ui-inline" id="saveHealth">Next</a></span>				
+				<span id="right-button"><a href="../page5/index.html" class="ui-btn ui-multiline ui-inline" id="saveHealth">다음</a></span>				
 			</div>
 			<script src="page4.js"></script>			
 			

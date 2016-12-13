@@ -1,7 +1,24 @@
+var locations = ["식당","카페","도서관","강의실","연구실","실험실","기숙사","직접입력"];
+var num_locations = locations.length;
+var curr_location = -1;
+locElem = document.getElementById("location");
+
 var locStream;
 var isLoadedLoc = false;
 
-console.log("Page 2");
+console.log("Page2_1");
+
+var locList = [], callFlag;
+
+function updateList(list){
+	for (i = 0 ; i < list.length; i++){
+		console.log(list[i]);
+		if (list[i].length != 0)
+			locations.push(list[i]);
+	}
+	num_locations = locations.length;
+	console.log(locations);
+}
 
 function getLocationList(){
 	var list = [];
@@ -22,6 +39,7 @@ function getLocationList(){
 				locList = str.split(',');
 				locSize = locList.length;
 				console.log("Successfully import");
+				updateList(locList);
 				return list;
 			}, function(e){
 				logging("error for reading : " + e.message);
@@ -38,9 +56,6 @@ function getLocationList(){
 	}, "rw");
 }
 
-console.log("Page2_1");
-
-var locList = [], callFlag;
 console.log("Page2_2");
 
 loadLocation = function (){
@@ -48,7 +63,7 @@ loadLocation = function (){
 	window.clearInterval(callFlag);
 	if (!isLoadedLoc){
 		console.log("Not fully called");
-		locList = getLocationList();
+		locList2 = getLocationList();
 		callFlag = window.setInterval(loadLocation, 1000);
 	}
 	else{
@@ -56,97 +71,92 @@ loadLocation = function (){
 	}
 };
 
-try{
-	callFlag = window.setInterval(loadLocation, 1000);
-	console.log("callFlag : " + callFlag);
-}
-catch(e){
-	console.log("error to set interval for loadLocation : " + e.message);
+callFlag = window.setInterval(loadLocation, 1000);
+
+function check_loc(){
+	if (curr_location==7)
+		locElem.disabled = false;
+	else
+		locElem.disabled = true;
 }
 
-
-//var locList = ["Lab", "Room"];
-try{
-	var locSize = locList.length;
-	var locIter = locSize;
-	var locElem = document.getElementById("new_location");
-	var defaultValue = "Enter location";
-	var locNew = defaultValue;
+function left_loc(){
+	if (curr_location === -1 || curr_location === 0  ) {
+		curr_location = num_locations - 1;
+	} else {
+		curr_location = curr_location -1;
+	}
 	
-	function saveLocation(){
-		newLocation = document.getElementById("new_location").value;
-		console.log(newLocation);
-		saveData("Location",newLocation);
-		buttonFeedback();
-		logging("Location saved : " + newLocation);
-		try{
-			if(newLocation.localeCompare(locNew)==0){
-				console.log("new Location is input. add to list");
-				try{
-					locList.push(locNew);
-					console.log("Successfully add location to list");
-				}
-				catch(e){
-					console.log("error to add location : " + e.message)
-				}
-			}
-			else{
-				console.log("already exist location");
-				console.log("locNew : " + locNew);
-				console.log("newLocation : " + newLocation);
-			}
-			locList = locList.filter(Boolean);
-			locStream.write(locList.toString());
-			locStream.close();
-			console.log("Successfully save locationList");
-		}
-		catch(e){
-			console.log("error to check new : " + e.message);
-		}
-//		save2Struct("location",newLocation);
+	check_loc();
+	document.getElementById("location").value = locations[curr_location];//
+	
+	buttonFeedback();
+} 
+
+function right_loc(){
+	if (curr_location === -1 || curr_location === num_locations - 1 ) {
+		curr_location = 0;
+	
+	} else {
+		curr_location = curr_location + 1;
 	}
 
-	function left_loc(){
-		locIter = locIter - 1;
-		if(locIter < 0){
-			locIter = locSize;
-			locElem.value = locNew;
-			locElem.disabled = false;
+	check_loc();
+	
+	document.getElementById("location").value = locations[curr_location];
+	
+	buttonFeedback();
+}
+
+var left_btn = document.getElementById("left_btn_loc");
+if (left_btn !== null){
+	left_btn.addEventListener("click", left_loc, false);
+}
+var right_btn = document.getElementById("right_btn_loc");
+if (right_btn !== null){
+	right_btn.addEventListener("click", right_loc, false);
+}
+
+function addLocation2List(newLocation){
+	console.log(newLocation);
+	logging("Location added : " + newLocation);
+	try{
+		if(curr_location == num_locations - 1){
+			console.log("new Location is input. add to list");
+			try{
+				locList.push(newLocation);
+				console.log("Successfully add location to list");
+			}
+			catch(e){
+				console.log("error to add location : " + e.message);
+			}
 		}
 		else{
-			locElem.value = locList[locIter];
-			locElem.disabled = true;
+			console.log("already exist location");
+			console.log("locNew : " + locNew);
+			console.log("newLocation : " + newLocation);
 		}
-		
-		buttonFeedback();
+		locList = locList.filter(Boolean);
+		locStream.write(locList.toString());
+		locStream.close();
+		console.log("Successfully added to locationList");
 	}
-
-	function right_loc(){
-		locIter = locIter + 1;
-		if(locIter > locSize)
-			locIter = 0;
-		if(locIter == locSize){
-			locElem.value = locNew;
-			locElem.disabled = false;
-		}
-		else{
-			locElem.value = locList[locIter];
-			locElem.disabled = true;
-		}
-		
-		buttonFeedback();
+	catch(e){
+		console.log("error to check new : " + e.message);
 	}
-
-	function changeLocation(){
-		if(!locElem.disabled)
-			locNew = locElem.value;
-		console.log(locNew);
-	}
-	document.getElementById("saveLocate").addEventListener("click", saveLocation);
-	locElem.addEventListener("change", changeLocation);
-	document.getElementById("left_btn_loc").addEventListener("click", left_loc);
-	document.getElementById("right_btn_loc").addEventListener("click", right_loc);
+//	save2Struct("location",newLocation);
 }
-catch(e){
-	console.log("error to load page 2 : " + e.message);
+
+function saveLocation() {
+	locationVal = document.getElementById("location").value;
+	saveData("Location", locationVal);
+	logging("Location Saved : " + locationVal);
+	
+	addLocation2List(locationVal);
+	
+	console.log(locList);
+	
+	buttonFeedback();
 }
+
+document.getElementById("saveLocation").addEventListener("click",saveLocation);

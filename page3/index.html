@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width,user-scalable=no"/>
+	<meta name="viewport" content="width=device-width,user-scalable=no" charset="utf-8"/>
 	<title>Wearable UI</title>
 	<link rel="stylesheet"  href="../lib/tau/wearable/theme/changeable/tau.css">
 	<link rel="stylesheet"  href="../css/style.css">
@@ -12,29 +12,50 @@
 	<div class="ui-page ui-page-active" id="main">
 		
 		<div class="ui-content">
+			<div class="below-section" style="text-align:center">
+				<font color="black" size="5px"><b>당신의</b></font>
+				<font color="#18709C" size="5px"><b>행동과 동행자는</b></font>
+				<font color="black" size="5px"><b>?</b></font>
+			</div>
+			
+			
 			<div class="ui-content first-section">
 			
 				<div class="divide-section-triple"> 
-					<div class="inline-block"><font color="black" size = 6.5px >Now, I'm with</font></div> 
+					<div class="inline-block"><font color="black" size = 4px >내 주변엔 </font></div> 
+					
+					<div class="inline-block"><input id="people_minus_btn" type="image" src="../UI_images/button_minus.png"></div>
+					
+					<div class="inline-block">
+						<input id="peoples" type="text" style="text-align:center; font-size:30pt; width:50px; height:60px" value = 0 disabled>
+					</div> 
+					
+					<div class="inline-block"><input id="people_plus_btn" type="image" src="../UI_images/button_plus.png"></div> 
+					<div class="inline-block"><font color="black" size = 4px >명이 있고,</font></div>  	
+					
 				</div>
 				
-				<div class="divide-section-triple " >
-					<div class="inline-block"><input id="minus_btn" type="image" src="../UI_images/button_minus.png"></div>
+				
+				<div class="divide-section-triple" >
+					<div class="inline-block"><font color="black" size = 4px >현재</font></div>  					
+				
+					<div class="inline-block"><input id="companion_minus_btn" type="image" src="../UI_images/button_minus.png"></div>
 					
 					<div class="inline-block">
 						<input id="companions" type="text" style="text-align:center; font-size:30pt; width:50px; height:60px" value = 0 disabled>
 					</div> 
 					
-					<div class="inline-block"><input id="plus_btn" type="image" src="../UI_images/button_plus.png"></div> 
-					<div class="inline-block"><font color="black" size = 7px >People,</font></div>  					
+					<div class="inline-block"><input id="companion_plus_btn" type="image" src="../UI_images/button_plus.png"></div> 
+					
+					<div class="inline-block"><font color="black" size = 4px >명과 함께</font></div>  					
 				</div>							
 						
 				<div class="divide-section-triple">
-					<div class="inline-block"><input id="left_btn" type="image" src="../UI_images/button_left.png"></div>
+					<div class="inline-block"><input id="left_btn_act" type="image" src="../UI_images/button_left.png"></div>
 					<div class="inline-block">
 						<input id="activity" type="text" style="text-align:center; font-size:20pt; width:20px; height:60px; width:240px" value="--" disabled>
 					</div>
-					<div class="inline-block"><input id="right_btn" type="image" src="../UI_images/button_right.png"></div>
+					<div class="inline-block"><input id="right_btn_act" type="image" src="../UI_images/button_right.png"></div>
 				</div>
 				<script src="./page3.js"></script>
 				
@@ -44,16 +65,11 @@
 				<img src="../UI_images/progressbar_3.png"></img>
 			</div>
 			
-			<div class="below-section">
-				<font color="black" size="5px"><b>Your</b></font>
-				<font color="#18709C" size="5px"><b>TYPE OF ACTIVITY</b></font>
-				<font color="black" size="5px"><b>?</b></font>
-			</div>
 			
 			<div class="below-section">			
-				<span id="left-button"><a href="../page2/index.html" class="ui-btn ui-multiline ui-inline" onclick="buttonFeedback()">Prev</a></span>
+				<span id="left-button"><a href="../page2/index.html" class="ui-btn ui-multiline ui-inline" onclick="buttonFeedback()">이전</a></span>
 							
-				<span id="right-button"><a href="../page4/index.html" class="ui-btn ui-multiline ui-inline" id="savePAct">Next</a></span>				
+				<span id="right-button"><a href="../page4/index_4page.html" class="ui-btn ui-multiline ui-inline" id="savePAct">다음</a></span>				
 			</div>			
 			
 		</div>
