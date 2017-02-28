@@ -1,12 +1,5 @@
 function dataStruct () {
 	"use strict";
-//	this.location = "none";
-//	this.companion = 0;
-//	this.activity = "none";
-//	this.heartRate = 0;
-//	this.health = 0;
-//	this.arousal = 0;
-//	this.happiness = 0;
 	this.save2Struct = function(type, value){
 		this[type] = value;
 	};

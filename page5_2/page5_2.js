@@ -1,7 +1,6 @@
 
 
 document.getElementById("saveCurrentStat").addEventListener("click", function(){
-//	var arousal = document.getElementById("arousal").value, happiness = document.getElementById("happiness").value;
 	var currHealth = getValueFromRadio("abs_health");
 	var currArousal = getValueFromRadio("abs_activeness");
 	var currHappiness = getValueFromRadio("abs_happiness");
@@ -12,5 +11,13 @@ document.getElementById("saveCurrentStat").addEventListener("click", function(){
 	
 	logging("save current status.");
 	
+	surveyState = "end";
+	
 	buttonFeedback();
 });
+
+document.getElementById("toPage5_1").addEventListener("click", function(){
+	surveyState = "mood";
+	
+	buttonFeedback();
+})

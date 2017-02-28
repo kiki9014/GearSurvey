@@ -9,7 +9,7 @@ var isLoadedLoc = false;
 console.log("Page2_1");
 
 var locList = [], callFlag;
-
+//update location list
 function updateList(list){
 	for (i = 0 ; i < list.length; i++){
 		console.log(list[i]);
@@ -19,11 +19,11 @@ function updateList(list){
 	num_locations = locations.length;
 	console.log(locations);
 }
-
+//read location list from file
 function getLocationList(){
 	var list = [];
 	isLoadedLoc = true;
-	tizen.filesystem.resolve("wgt-private", function(result){
+	tizen.filesystem.resolve("wgt-private", function(result){ //file in wgt-private cannot read from external access and it will erase file
 		dir = result;
 		try{
 			locFile = dir.resolve("location.txt");
@@ -57,7 +57,7 @@ function getLocationList(){
 }
 
 console.log("Page2_2");
-
+//In sometimes, getLocationList is not called, loadLocation function is called repeatedly until getLocationList is called
 loadLocation = function (){
 	console.log("call loadFunction");
 	window.clearInterval(callFlag);
@@ -74,8 +74,8 @@ loadLocation = function (){
 callFlag = window.setInterval(loadLocation, 1000);
 
 function check_loc(){
-	if (curr_location==7)
-		locElem.disabled = false;
+	if (curr_location==7) //if current string is "직접 입력"
+		locElem.disabled = false; //user can enter location
 	else
 		locElem.disabled = true;
 }
@@ -121,7 +121,7 @@ function addLocation2List(newLocation){
 	console.log(newLocation);
 	logging("Location added : " + newLocation);
 	try{
-		if(curr_location == num_locations - 1){
+		if(curr_location == num_locations - 1){ //current iterator of location is pointing newly entered location
 			console.log("new Location is input. add to list");
 			try{
 				locList.push(newLocation);
@@ -133,10 +133,12 @@ function addLocation2List(newLocation){
 		}
 		else{
 			console.log("already exist location");
-			console.log("locNew : " + locNew);
 			console.log("newLocation : " + newLocation);
 		}
-		locList = locList.filter(Boolean);
+		locList = locList.filter(Boolean); //remove empty space
+		locList = locList.filter(function(item, pos, self){
+			return self.indexOf(item) == pos; //remove duplicated location
+		});
 		locStream.write(locList.toString());
 		locStream.close();
 		console.log("Successfully added to locationList");
@@ -144,9 +146,8 @@ function addLocation2List(newLocation){
 	catch(e){
 		console.log("error to check new : " + e.message);
 	}
-//	save2Struct("location",newLocation);
 }
-
+//save response of location and move to next page
 function saveLocation() {
 	locationVal = document.getElementById("location").value;
 	saveData("Location", locationVal);
@@ -155,8 +156,15 @@ function saveLocation() {
 	addLocation2List(locationVal);
 	
 	console.log(locList);
+	surveyState = "peopleAct";
 	
 	buttonFeedback();
 }
 
+function returnToPage1(){
+	buttonFeedback();
+	surveyState = "start";
+}
+
 document.getElementById("saveLocation").addEventListener("click",saveLocation);
+document.getElementById("toPage1").addEventListener("click", returnToPage1);

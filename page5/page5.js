@@ -1,7 +1,6 @@
 
 
 document.getElementById("saveFeeling").addEventListener("click", function(){
-//	var arousal = document.getElementById("arousal").value, happiness = document.getElementById("happiness").value;
 	var arousal = getValueFromRadio("arousal");
 	var happiness = getValueFromRadio("happiness");
 	
@@ -10,5 +9,15 @@ document.getElementById("saveFeeling").addEventListener("click", function(){
 	
 	logging("save feeling");
 	
+	surveyState = "mood_2";
+	
 	buttonFeedback();
 });
+
+document.getElementById("toPage4").addEventListener("click", function(){
+	surveyState = "health";
+	
+	logging("goTohealth");
+	
+	buttonFeedback();
+})

@@ -1,16 +1,5 @@
-var result;
-var watchID = localPort.addMessagePortListener(function(data, remote){
-	logging("data received");
-	logging(data);
-	result = data;
-	if(result <= 0){
-		console.log("result is under 0");
-		window.alert("Initializinig HRM.\n Please wait and retry again");
-		remotePort.sendMessage([{key:"command",value:"heartRate"}],localPort);
-	}
-	document.getElementById("heart_rate").setAttribute("value", data[0].value);
-});
 
+//request to sensing app for heartrate
 remotePort.sendMessage([{key:"command",value:"heartRate"}],localPort);
 logging("data transmitted");
 
@@ -19,9 +8,11 @@ document.getElementById("saveHealth").addEventListener("click", function(){
 	
 	saveData("HeartRate", HR);
 	saveData("Health", imoji);
-	localPort.removeMessagePortListener(watchID);
+//	localPort.removeMessagePortListener(watchID);
 	
 	logging("save Health Data");
+	
+	surveyState = "mood_1";
 	
 	buttonFeedback();
 });
@@ -31,3 +22,8 @@ document.getElementById("getHR").addEventListener("click", function(){
 	remotePort.sendMessage([{key:"command",value:"heartRate"}],localPort);
 	
 });
+
+document.getElementById("toPage3").addEventListener("click", function(){
+	surveyState = "peopleAct";
+	buttonFeedback();
+})

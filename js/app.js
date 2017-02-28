@@ -2,6 +2,7 @@ var fileStream, newFile, localPort = tizen.messageport.requestLocalMessagePort("
 var delayDur = 5, watchID
 var totDelay = 0;
 var handleVib;
+var surveyState = "start";
 
 dataSt = new dataStruct();
 debugger;
@@ -10,12 +11,15 @@ console.log("start logging");
 startLogging();
 console.log("logging is start : " + logFile);
 
+//나중에 사용자에게 이름을 직접 입력 받는 방식으로 변경
 personName = "John";
 
+//unused function
 function whoAmI(){
 	return personName;
 }
 
+//print current time
 function timePrint(time){
 	var hour, minute, second, milSec;
 	
@@ -30,25 +34,47 @@ function timePrint(time){
 function saveTime(){
 	fileStream.write(timeStamp()+"\t");
 }
-
+//message port receiver function. communicate with sensing app
 checkDelayID = localPort.addMessagePortListener(function(data, remote){
-	logging("delayData Received");
-	result = data[0].value;
-	if(result != 0){
-		logging("move to reason page");
-		totDelay = result;
-		tau.changePage("after_snooze/index.html");
-	} // if delay occurred
-	else
-		logging("Not delayed App");
+	logging("get response from sensing app : " + surveyState);
+	if (surveyState == "start"){
+		logging("delayData Received");
+		result = data[0].value;
+		if(result != 0){
+			logging("move to reason page");
+			totDelay = result;
+			tau.changePage("after_snooze/index.html");
+		} // if delay occurred
+		else
+			logging("Not delayed App");
+	}
+	else if(surveyState=="health"){ //used in page 4
+		logging("data received");
+		logging(data);
+		result = data;
+		if(result <= 0){
+			console.log("result is under 0");
+			window.alert("Initializinig HRM.\n Please wait and retry again");
+			remotePort.sendMessage([{key:"command",value:"heartRate"}],localPort);
+		} //less than 0 means sensing app cannot read HR
+		document.getElementById("heart_rate").setAttribute("value", data[0].value);
+	}
+	else if(surveyState=="end"){ //show current survey count
+		logging("get count");
+		logging("get Current count : " + data[0].value);
+		document.getElementById("num_logs").setAttribute("value", data[0].value);
+	}
+	else {
+		logging("wrong situation : " + surveyState);
+	}
 });
 
 startDate = getMonthDate(tizen.time.getCurrentDateTime());
-
+//applied to every radio button
 function getValueFromRadio(name){
 	var objList = document.getElementsByName(name);
 	console.log(objList);
-	var checkedValue=3;
+	var checkedValue=-99; //-99 means undefined (not choosed by user)
 	numObj = objList.length;
 	for (i = 0 ; i<numObj; i++){
 		obj = objList[i];
@@ -92,13 +118,11 @@ function startSave(){
 				fileStream = fs;
 				logging("Hello gear!");
 				saveTime();
-				
-				reason = "for Test";
-				if(isDelay){
+				if(isDelay){ //if survey has been delayed more than 0
 					saveData("Delay","1");
-					saveData("DelayTime", delayTime);
-					saveData("DelayedTime",totDelay);
-					saveData("Reason", reason);
+					saveData("DelayTime", delayTime); //recent delayed time
+					saveData("DelayedTime",totDelay); //total delayed time between current survey and previous survey
+					saveData("Reason", reason); //recent reason to delay
 				}
 			}, function(e){
 				logging("error to open stream : " + e.message);
@@ -110,11 +134,11 @@ function startSave(){
 	
 	logging("Start survey");
 
-	remotePort.sendMessage([{key:"command",value:"surveyStart"}],localPort);
+	remotePort.sendMessage([{key:"command",value:"surveyStart"}],localPort); //send start flag to sensing app 
 	
-	tizen.power.release("SCREEN");
+	tizen.power.release("SCREEN"); //release screen state because user replied to survey
 	logging("Turn Off Screen");
-	localPort.removeMessagePortListener(checkDelayID);
+	surveyState = "location";
 }
 
 function endSave(){
@@ -125,14 +149,13 @@ function endSave(){
 }
 
 function saveData(label, data){
-//	fileStream.write(label+":"+data+",");
 	dataSt.save2Struct(label, data);
 }
 
 $(window).load(function(){
 	
 	tizen.power.turnScreenOn();
-	tizen.power.request("SCREEN", "SCREEN_NORMAL");
+	tizen.power.request("SCREEN", "SCREEN_NORMAL");	//Turn on the screen by force to alarm
 	logging("Turn On Screen");
 	document.getElementById("startSurvey").addEventListener("click", startSave);
 
@@ -161,12 +184,11 @@ $(window).load(function(){
 	
 	logging("logging is start : " + logFile);
 
-	tizen.power.request("SCREEN", "SCREEN_NORMAL");
+	tizen.power.request("SCREEN", "SCREEN_NORMAL");	//Turn on the screen by force to alarm. one more check
 	logging("Current Screen is " + tizen.power.isScreenOn());
-	remotePort.sendMessage([{key:"command",value:"checkDelayed"}],localPort);
+	remotePort.sendMessage([{key:"command",value:"checkDelayed"}],localPort); //check whether survey has delayed before
 	console.log("listener is " + watchID);
 	
-	//requestConnect();
 });
 
 function buttonFeedback(){
@@ -175,7 +197,6 @@ function buttonFeedback(){
 }
 
 function delaySurvey(){
-	//remotePort.sendMessage([{key:"command",value:"recordPause"}],localPort);
 	remotePort.sendMessage([{key:"command",value:"postpone"},{key:"time",value:delayDur}],localPort);
 	buttonFeedback();
 	logging("delay survey");
@@ -185,9 +206,9 @@ function delaySurvey(){
 	
 	tizen.application.getCurrentApplication().exit();
 	
-//	handleID = window.setInterval(release, delayDur*tizen.alarm.PERIOD_MINUTE*1000);
 }
 
+//not used now
 function release(){
 	tizen.application.launch(tizen.application.getAppInfo().id, function(){
 		console.log("success");
@@ -211,7 +232,6 @@ function setReason(reason2Delay){
 }
 
 function applyDelay(delayReason){
-//	totDelay += delayDur;
 	if(reason != ""){
 		reason += ", " + delayReason+"("+totDelay+")";
 	}
@@ -219,7 +239,7 @@ function applyDelay(delayReason){
 		reason = setReason(delayReason);
 	}
 }
-
+//notify by vibration
 function appStartVibe(){
 
 	tizen.power.request("SCREEN", "SCREEN_NORMAL");

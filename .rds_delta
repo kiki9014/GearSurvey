@@ -1,8 +1,7 @@
 #delete
-res/wgt/SurveyApp.wgt
 #add
 #modify
 res/wgt/author-signature.xml
 res/wgt/signature1.xml
-res/wgt/page5_2\index_5-2page.html
-res/wgt/page5_2\page5_2.js
+res/wgt/page2\page2.js
+res/wgt/page3\page3.js
